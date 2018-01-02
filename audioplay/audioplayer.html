@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		<title></title>
+		<link rel="stylesheet" href="css/audioplayer.css" />
+		<link rel="stylesheet" href="css/font.css" />
+		<script type="text/javascript" src="js/flexible.js" ></script>
+	</head>
+	<body>
+		<div class="content">
+			<div class="videoplayer">
+				<audio></audio>
+				<div class="videoplayerleft">
+					<div class="audioname">一人饮酒醉</div>
+					<div class="audio-progress">
+						<div class="starttime">00:00</div>
+						<div class="progress">
+							<div class="progress-inner"></div>
+						</div>
+						<div class="endtime">01:20</div>
+					</div>
+				</div>
+				<div class="videoplayerright">
+					<div class="wrap">  
+				        <div class="wrapper right">
+				            <div class="circleProgress rightcircle"></div>
+				        </div>
+				        <div class="wrapper left">
+				            <div class="circleProgress leftcircle"></div>
+				        </div>
+				    	<div class="num"><span>0</span>%</div>  
+					</div>  
+				</div>
+			</div>
+			
+		</div>
+		<script type="text/javascript" src="js/jquery1.7.2.js" ></script> 
+		<script type="text/javascript" src="js/audio.js" ></script>
+		<script>
+			var percent=1;
+			var deg = 0;
+			var isFinsh = true;
+			var dom = $('.rightcircle');
+		    var loading=setInterval(function(){
+		    	if(dom.hasClass("leftcircle") && percent ==181 ){
+		    		clearInterval(loading);
+		    		return false;
+		    	}
+		    	if(percent == 181){
+		    		percent=1;
+		    		dom = $('.leftcircle');
+		    	}  
+		        dom.css("-webkit-transform","rotate("+(225+percent)+"deg)");
+		        if(percent%5 == 0){
+		        	$(".num span").html(deg++);
+		        }
+		        percent++;
+		        
+		    },100);  
+		</script>
+		
+	</body>
+</html>
